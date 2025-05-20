@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Sobre</title>
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+     <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="sobre.html">Letter</a></li>
+      <li><a href="contato.html">Contato</a></li>
+    </ul>
+  </nav>
+
+ <div class="envelope" onclick="abrirEnvelope()">
+    <div class="frente">
+      <div class="coracao">&#10084;&#65039;</div> 
+    </div>
+    <div class="dentro">
+      <p class="mensagem">
+        Min elskling, jeg vil gerne fortælle dig, at du er den vigtigste person i verden for mig. Hver dag bliver jeg mere og mere imponeret over, hvor talentfuld du er... og hvordan du ser ud som en malet engel fra et renæssance-maleri. Jeg vil bare sige, at jeg elsker dig så meget, og at jeg savner dig hver dag. Du er den vigtigste person i mit liv, og jeg håber, vi kan være sammen for evigt. 💖
+      </p>
+    </div>
+  </div>
+
+<script>
+    function abrirEnvelope() {
+      const envelope = document.querySelector('.envelope');
+      envelope.classList.toggle('aberto');
+    }
+  </script>
+</body>
+</html>
