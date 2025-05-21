@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title> GUSTAV ILYSM </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="sobre.html">Sobre</a></li>
+            <li><a href="contato.html">Contato</a></li>
+            <li><a href="invite.html">Invite</a></li>
+        </ul>
+    </nav>
+   <div style="text-align: center;">
+    <h1>Let's play chess together?</h1>
+    <img src="img/chess.jpg" alt="chess" style="display: block; margin: 0 auto; max-width: 60%;">
+    <p> pls min far lets play chess together? </p>
+    <div class="checkbox-container">
+  <label>My far please play chess with me</label>
+  <div>
+    <input type="radio" id="yes" name="play-chess" value="yes">
+    <label for="yes">Yes</label>
+    <input type="radio" id="no" name="play-chess" value="no">
+    <label for="no">No</label>
+  </div>
+</div>
+
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span class="close">&times;</span>
+    <p>WHY U CLICKED HERE? U DONT WANNA PLAY WITH ME YOU HATE ME?</p>
+  </div>
+</div>
+
+<p>I love you so much, and I hope you are having a great day</p>
+<p>I miss you so much, and I hope we can play chess together</p>
+<button class="botao-chess" onclick="window.location.href='https://www.chess.com'">Click here to play chess with me</button>
+
+
+<script>
+  document.querySelectorAll('input[name="play-chess"]').forEach((elem) => {
+    elem.addEventListener("change", function(event) {
+      if (event.target.id === "no" && event.target.checked) {
+        document.getElementById("popup").style.display = "block";
+      }
+    });
+  });
+
+  document.querySelector(".close").onclick = function() {
+    document.getElementById("popup").style.display = "none";
+  }
+
+  window.onclick = function(event) {
+    if (event.target == document.getElementById("popup")) {
+      document.getElementById("popup").style.display = "none";
+    }
+  }
+</script>
