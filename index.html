@@ -178,6 +178,7 @@
 
         <audio id="musicaFofa" loop>
             <source src="msc/ravel.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
         </audio>
 
         <button class="botao-fofo" id="musicButton">💖 CLICK HERE</button>
@@ -205,24 +206,44 @@
         setInterval(atualizarContador, 1000);
         atualizarContador(); // Inicia imediatamente
 
-        // Controle de música
-        const music = document.getElementById('musicaFofa');
-        const button = document.getElementById('musicButton');
-        
-        button.addEventListener('click', function() {
-            if (music.paused) {
-                music.play()
-                    .then(() => {
-                        button.textContent = '🔊 NOW PLAYING';
-                    })
-                    .catch(error => {
-                        console.error("Playback failed:", error);
-                        alert("Audio playback failed. Please interact with the page first.");
-                    });
-            } else {
-                music.pause();
-                button.textContent = '💖 CLICK HERE';
-            }
+        // Controle de música - versão corrigida
+        document.addEventListener('DOMContentLoaded', function() {
+            const music = document.getElementById('musicaFofa');
+            const button = document.getElementById('musicButton');
+            
+            // Primeiro, vamos silenciar o áudio e prepará-lo para ser tocado
+            music.volume = 0.5; // Define o volume para 50%
+            music.muted = false;
+            
+            // Adiciona um manipulador de clique ao documento inteiro para desbloquear o áudio
+            document.body.addEventListener('click', function unlockAudio() {
+                // Isso só precisa acontecer uma vez
+                document.body.removeEventListener('click', unlockAudio);
+                
+                // Agora podemos configurar o botão de música
+                button.addEventListener('click', function() {
+                    if (music.paused) {
+                        music.play()
+                            .then(() => {
+                                button.textContent = '🔊 NOW PLAYING';
+                            })
+                            .catch(error => {
+                                console.error("Erro ao reproduzir:", error);
+                                button.textContent = '❌ ERRO - CLIQUE NOVAMENTE';
+                            });
+                    } else {
+                        music.pause();
+                        button.textContent = '💖 CLICK HERE';
+                    }
+                });
+                
+                // Habilita o botão
+                button.disabled = false;
+            }, { once: true });
+            
+            // Desabilita o botão até que o usuário interaja com a página
+            button.disabled = true;
+            button.textContent = '👉 CLICK IN THE FLOWER FIRST FOR START PLAYING';
         });
     </script>
 </body>
